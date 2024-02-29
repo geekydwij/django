@@ -27,4 +27,4 @@ def student_list(request):
     page_number = request.GET.get('page')
     students = paginator.get_page(page_number)
 
-    return render(request, 'students_list.html', {'students': students})
+    return render(request, 'studentManagement/students_list.html', {'students': students})
