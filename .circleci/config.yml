@@ -31,24 +31,24 @@ jobs:
           name: Build Docker image
           command: |
             cd project/
-            docker build -t djangoapplication .
+            docker build -t django .
 
       # Authenticate AWS ECR and push Docker image
       - run:
           name: Push Docker image to Amazon ECR
           command: |
-            aws configure set aws_access_key_id AKIA3FLD26H7FC2WIWUO
-            aws configure set aws_secret_access_key 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
+            aws configure set aws_access_key_id AKIA2UC3BUFOBMQAOIPO
+            aws configure set aws_secret_access_key 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
             aws configure set default.region ap-south-1
-            aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 767397917182.dkr.ecr.ap-south-1.amazonaws.com
-            docker tag djangoapplication:latest 767397917182.dkr.ecr.ap-south-1.amazonaws.com/djangoapplication:latest
-            docker push 767397917182.dkr.ecr.ap-south-1.amazonaws.com/djangoapplication:latest
+            aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 730335387996.dkr.ecr.ap-south-1.amazonaws.com
+            docker tag django:latest 730335387996.dkr.ecr.ap-south-1.amazonaws.com/django:latest
+            docker push 730335387996.dkr.ecr.ap-south-1.amazonaws.com/django:latest
 
       # Deploy to ec2
       - run:
           name: Deploy to ec2
           command: |
-            ssh -oStrictHostKeyChecking=no -v ec2-user@ec2-13-232-252-75.ap-south-1.compute.amazonaws.com "sudo su -c './deploy.sh'"
+            ssh -oStrictHostKeyChecking=no -v ec2-user@ec2-65-0-11-135.ap-south-1.compute.amazonaws.com "sudo su -c './deploy.sh'"
 
 workflows:
   version: 2
