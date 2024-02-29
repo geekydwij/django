@@ -9,6 +9,8 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
   web:
     image: 730335387996.dkr.ecr.ap-south-1.amazonaws.com/django:latest
     restart: always
