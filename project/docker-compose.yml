@@ -10,7 +10,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
   web:
-    image: dwijptltnm/django:latest
+    image: 730335387996.dkr.ecr.ap-south-1.amazonaws.com/django:latest
     restart: always
     command: >
       bash -c "python manage.py makemigrations &&
